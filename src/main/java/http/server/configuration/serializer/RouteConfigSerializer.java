@@ -2,6 +2,7 @@ package http.server.configuration.serializer;
 
 import com.google.gson.*;
 import http.server.configuration.routeConfig.BaseRouteSettings;
+import http.server.configuration.routeConfig.ErrorRouteSettings;
 import http.server.configuration.routeConfig.RedirectRouteSettings;
 import http.server.configuration.routeConfig.StaticResponseRouteSettings;
 
@@ -29,6 +30,8 @@ public class RouteConfigSerializer implements JsonDeserializer<BaseRouteSettings
                 return context.deserialize(jsonObject, RedirectRouteSettings.class);
             case "static":
                 return context.deserialize(jsonObject, StaticResponseRouteSettings.class);
+            case "error":
+                return context.deserialize(jsonObject, ErrorRouteSettings.class);
             default:
                 throw new JsonParseException("Tipo desconocido: " + type);
         }

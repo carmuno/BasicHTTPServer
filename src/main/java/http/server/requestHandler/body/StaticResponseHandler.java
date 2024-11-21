@@ -1,7 +1,8 @@
-package http.server.requestHandler;
+package http.server.requestHandler.body;
 
 import com.sun.net.httpserver.HttpExchange;
 import http.server.configuration.routeConfig.StaticResponseRouteSettings;
+import http.server.requestHandler.RouteHandler;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -18,10 +19,11 @@ public class StaticResponseHandler extends RouteHandler<StaticResponseRouteSetti
     }
 
     @Override
-    public void handle(HttpExchange exchange) throws IOException {
+    public void handleRequest(HttpExchange exchange)
+    throws IOException {
         exchange.getResponseHeaders().add("Content-Type", config.getContentType());
         String response = config.getResponseBody();
-        exchange.sendResponseHeaders(200, response.getBytes().length);
+        exchange.sendResponseHeaders(config.getCode(), response.getBytes().length);
         try (OutputStream os = exchange.getResponseBody()) {
             os.write(response.getBytes());
         }

@@ -4,62 +4,68 @@
     "/": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe0",
-      "redirectCode": 301
+      "code": 301
     },
     "/cnoe0": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe1",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe1": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe2",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe2": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe3",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe3": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe4",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe4": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe5",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe5": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe6",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe6": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe7",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe7": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe8",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe8": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe9",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe9": {
       "type": "redirect",
       "redirectUrl": "http://localhost:8080/cnoe10",
-      "redirectCode": 302
+      "code": 302
     },
     "/cnoe10": {
       "type": "static",
       "responseBody": "{ \"cnoe\": \"body\" }",
-      "contentType": "application/json"
+      "contentType": "application/json",
+      "code": 200
+    },
+    "/cnoe11": {
+      "type": "error",
+      "errorMessage": "bad request",
+      "code": 404
     }
   }
 }

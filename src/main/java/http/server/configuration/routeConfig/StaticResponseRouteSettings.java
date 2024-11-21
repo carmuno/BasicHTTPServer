@@ -2,7 +2,9 @@ package http.server.configuration.routeConfig;
 
 
 import com.sun.net.httpserver.HttpHandler;
-import http.server.requestHandler.StaticResponseHandler;
+import http.server.requestHandler.body.StaticResponseHandler;
+
+import java.util.Map;
 
 /**
  * Configuración específica para rutas que devuelven respuestas estáticas.
@@ -21,7 +23,10 @@ public class StaticResponseRouteSettings extends BaseRouteSettings {
      */
     private final String contentType;
 
-    public StaticResponseRouteSettings(String responseBody, String contentType) {
+    public StaticResponseRouteSettings(String responseBody, String contentType,
+                                       Map<String, String> headers,
+                                       Map<String, String> cookies, int code) {
+        super(headers, cookies, code);
         this.responseBody = responseBody;
         this.contentType = contentType;
     }
