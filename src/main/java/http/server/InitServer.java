@@ -41,9 +41,16 @@ public class InitServer {
 
         serverSettings.getServers().forEach((httpServerSetting)-> {
             HttpServer server = null;
+            String hostName = httpServerSetting.getHostName();
+
+            if(hostName==null){
+                hostName = "localhost";
+            }
+
             try {
-                server = HttpServer.create(new InetSocketAddress(httpServerSetting.getDefaultPort()), 0);
+                server = HttpServer.create(new InetSocketAddress(hostName, httpServerSetting.getDefaultPort()), 0);
             } catch (IOException e) {
+                e.printStackTrace();
                 System.err.println("El servidor ha fallado al iniciarse en el puerto " + httpServerSetting.defaultPort);
             }
 

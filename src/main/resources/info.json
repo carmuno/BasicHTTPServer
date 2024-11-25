@@ -1,11 +1,12 @@
 {
   "servers": [
     {
+      "hostName": "server0",
       "defaultPort": 80,
       "routes": {
         "/": {
           "type": "redirect",
-          "redirectUrl": "http://localhost:80/cnoe0",
+          "redirectUrl": "http://server1:81",
           "code": 301,
           "headers": {
             "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
@@ -13,7 +14,7 @@
         },
         "/cnoe0": {
           "type": "redirect",
-          "redirectUrl": "http://localhost:81/cnoe0",
+          "redirectUrl": "http://server1:81/",
           "code": 302,
           "headers": {
             "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
@@ -105,11 +106,12 @@
       }
     },
     {
+      "hostName": "server1",
       "defaultPort": 81,
       "routes": {
         "/": {
           "type": "redirect",
-          "redirectUrl": "http://localhost:81/cnoe0",
+          "redirectUrl": "http://server0:80",
           "code": 301,
           "headers": {
             "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
@@ -117,7 +119,7 @@
         },
         "/cnoe0": {
           "type": "redirect",
-          "redirectUrl": "http://localhost:80/cnoe0",
+          "redirectUrl": "http://server0:80/cnoe0",
           "code": 302,
           "headers": {
             "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"

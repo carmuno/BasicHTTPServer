@@ -13,6 +13,11 @@ import java.util.Map;
 public class ServerConfig {
 
     /**
+     * El nombre del host.
+     */
+    private final String hostName;
+
+    /**
      * Puerto de arranque del servidor.
      */
     public final int defaultPort;
@@ -29,7 +34,8 @@ public class ServerConfig {
      * @param defaultPort Puerto en el que el servidor escuchará.
      * @param routes Mapa que define las rutas y sus configuraciones asociadas.
      */
-    public ServerConfig(int defaultPort, Map<String, BaseRouteSettings> routes) {
+    public ServerConfig(String hostName, int defaultPort, Map<String, BaseRouteSettings> routes) {
+        this.hostName = hostName;
         this.defaultPort = defaultPort;
         this.routes = routes;
     }
@@ -50,5 +56,13 @@ public class ServerConfig {
      */
     public int getDefaultPort() {
         return defaultPort;
+    }
+
+    /**
+     * Obtiene el nombre del host.
+     * @return
+     */
+    public String getHostName() {
+        return hostName;
     }
 }
