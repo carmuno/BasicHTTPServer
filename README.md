@@ -11,52 +11,56 @@ With this library, you can define both the **routes** and their corresponding **
 
 ```json
 {
-  "defaultPort": 8080,
-  "routes": {
-    "/": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe0",
-      "code": 301,
-      "headers": {
-        "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+  "servers": [
+    {
+      "defaultPort": 8080,
+      "routes": {
+        "/": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:8080/cnoe0",
+          "code": 301,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe0": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:8080/cnoe1",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe1": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:8080/cnoe2",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe2": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:8080/cnoe3",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe3": {
+          "type": "static",
+          "responseBody": "{ \"cnoe\": \"body\" }",
+          "contentType": "application/json",
+          "code": 200
+        },
+        "/cnoe4": {
+          "type": "error",
+          "errorMessage": "bad request",
+          "code": 404
+        }
       }
-    },
-    "/cnoe0": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe1",
-      "code": 302,
-      "headers": {
-        "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
-      }
-    },
-    "/cnoe1": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe2",
-      "code": 302,
-      "headers": {
-        "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
-      }
-    },
-    "/cnoe2": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe3",
-      "code": 302,
-      "headers": {
-        "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
-      }
-    },
-    "/cnoe3": {
-      "type": "static",
-      "responseBody": "{ \"cnoe\": \"body\" }",
-      "contentType": "application/json",
-      "code": 200
-    },
-    "/cnoe4": {
-      "type": "error",
-      "errorMessage": "bad request",
-      "code": 404
     }
-  }
+  ]
 }
   
 ```
