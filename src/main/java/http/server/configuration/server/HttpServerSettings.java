@@ -1,54 +1,36 @@
+
 package http.server.configuration.server;
 
-import http.server.configuration.routeConfig.BaseRouteSettings;
-
-import java.util.Map;
+import java.util.List;
 
 /**
- * Clase que define la configuración global para el servidor HTTP.
- * incluye el puerto de arranque y como queremos que se manejen las rutas y bajo que condiciones.
+ * Clase que representa la configuración de un servidor HTTP.
+ * Permite definir una lista de configuraciones para múltiples servidores.
  *
- * @author Carlos Noé Muñoz (cnoemunoz@gmail.com).
+ * @author Carlos Noe Muñoz (cnoemunoz@gmail.com)
  */
 public class HttpServerSettings {
 
     /**
-     * Puerto de arranque del servidor.
+     * Lista de configuraciones de servidores.
      */
-    public final int defaultPort;
+    private List<ServerConfig> servers;
 
     /**
-     * Mapa de rutas asociadas y sus configuraciones.
-     * Ejemplo: "/" : {redirectUrl, redirectCode, ...}, "/cnoe" : {...}
-     */
-    public final Map<String, BaseRouteSettings> routes;
-
-    /**
-     * Constructor que inicializa la configuración del servidor.
+     * Obtiene la lista de configuraciones de servidores.
      *
-     * @param defaultPort Puerto en el que el servidor escuchará.
-     * @param routes Mapa que define las rutas y sus configuraciones asociadas.
+     * @return Lista de configuraciones de servidores.
      */
-    public HttpServerSettings(int defaultPort, Map<String, BaseRouteSettings> routes) {
-        this.defaultPort = defaultPort;
-        this.routes = routes;
+    public List<ServerConfig> getServers() {
+        return servers;
     }
 
     /**
-     * Obtiene el mapa de rutas y sus configuraciones.
+     * Establece la lista de configuraciones de servidores.
      *
-     * @return Mapa de rutas.
+     * @param servers Lista de configuraciones de servidores a establecer.
      */
-    public Map<String, BaseRouteSettings> getRoutes() {
-        return routes;
-    }
-
-    /**
-     * Obtiene el puerto de arranque del servidor.
-     *
-     * @return Puerto del servidor.
-     */
-    public int getDefaultPort() {
-        return defaultPort;
+    public void setServers(List<ServerConfig> servers) {
+        this.servers = servers;
     }
 }

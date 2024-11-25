@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
 /**
  * @author Carlos Noé Muñoz (cnoemunoz@gmail.com).
  */
-public class RouteConfigSerializer implements JsonDeserializer<BaseRouteSettings> {
+public class RouteConfigDeserializer implements JsonDeserializer<BaseRouteSettings> {
 
     /**
      * Campo del json que me dice el tipo de petición.

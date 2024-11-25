@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @author Carlos Noé Muñoz (cnoemunoz@gmail.com).
  */
-public abstract class BaseRouteSettings implements IConfigLoader {
+public abstract class BaseRouteSettings {
 
     /**
      * El tipo a asignar. (si es redirect, si es respuesta static)

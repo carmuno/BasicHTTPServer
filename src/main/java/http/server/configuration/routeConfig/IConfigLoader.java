@@ -2,8 +2,9 @@ package http.server.configuration.routeConfig;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import http.server.configuration.serializer.RouteConfigSerializer;
+import http.server.configuration.serializer.RouteConfigDeserializer;
 import http.server.configuration.server.HttpServerSettings;
+import http.server.configuration.server.ServerConfig;
 
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -20,7 +21,7 @@ public interface IConfigLoader {
      * Carga la configuración desde un archivo JSON ubicado en la carpeta resources.
      *
      * @param name Ruta relativa del archivo JSON.
-     * @return Instancia de {@link HttpServerSettings}.
+     * @return Instancia de {@link ServerConfig}.
      */
     static HttpServerSettings getConfig(String name) {
         try (Reader reader = new InputStreamReader(
@@ -41,7 +42,7 @@ public interface IConfigLoader {
      */
     static Gson createGson() {
         return new GsonBuilder()
-                .registerTypeAdapter(BaseRouteSettings.class, new RouteConfigSerializer())
+                .registerTypeAdapter(BaseRouteSettings.class, new RouteConfigDeserializer())
                 .setPrettyPrinting()
                 .create();
     }

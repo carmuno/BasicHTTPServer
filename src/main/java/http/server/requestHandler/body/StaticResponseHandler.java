@@ -14,7 +14,7 @@ import java.io.OutputStream;
  */
 public class StaticResponseHandler extends RouteHandler<StaticResponseRouteSettings> {
 
-    public StaticResponseHandler(StaticResponseRouteSettings config) {
+    public StaticResponseHandler(StaticResponseRouteSettings config)  {
         super(config);
     }
 

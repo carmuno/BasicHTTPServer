@@ -3,9 +3,11 @@ package http.server;
 import com.sun.net.httpserver.HttpServer;
 import http.server.configuration.routeConfig.BaseRouteSettings;
 import http.server.configuration.server.HttpServerSettings;
+import http.server.configuration.server.ServerConfig;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,12 +19,11 @@ import java.util.Map;
 public class InitServer {
 
     /**
-     * Contrución de arranque de nuestro servidor.
+     * Construción de arranque de nuestro servidor/es
      */
-    public InitServer(HttpServerSettings httpServerSettings) {
+    public InitServer(HttpServerSettings serverSettings) {
         try {
-            HttpServer server = configureServer(httpServerSettings);
-            startServer(server, httpServerSettings.getDefaultPort());
+            configureServer(serverSettings);
         } catch (IOException e) {
             System.err.println("Error al iniciar el servidor: " + e.getMessage());
             e.printStackTrace();
@@ -32,19 +33,31 @@ public class InitServer {
     /**
      * Configura las rutas y handlers del servidor.
      *
-     * @param httpServerSettings la configuración del servidor.
+     * @param serverSettings la configuración del servidor/es
      * @return Instancia configurada de {@link HttpServer}.
      * @throws IOException Si ocurre un error al crear el servidor.
      */
-    private HttpServer configureServer(HttpServerSettings httpServerSettings) throws IOException {
-        HttpServer server = HttpServer.create(new InetSocketAddress(httpServerSettings.getDefaultPort()), 0);
+    private void configureServer(HttpServerSettings serverSettings) throws IOException {
 
-        for (Map.Entry<String, BaseRouteSettings> route : httpServerSettings.getRoutes().entrySet()) {
-            server.createContext(route.getKey(), route.getValue().createHandler());
-        }
+        serverSettings.getServers().forEach((httpServerSetting)-> {
+            HttpServer server = null;
+            try {
+                server = HttpServer.create(new InetSocketAddress(httpServerSetting.getDefaultPort()), 0);
+            } catch (IOException e) {
+                System.err.println("El servidor ha fallado al iniciarse en el puerto " + httpServerSetting.defaultPort);
+            }
 
-        server.setExecutor(null);
-        return server;
+            if(server == null){
+                return;
+            }
+
+            for (Map.Entry<String, BaseRouteSettings> route : httpServerSetting.getRoutes().entrySet()) {
+                server.createContext(route.getKey(), route.getValue().createHandler());
+            }
+
+            server.setExecutor(null);
+            startServer(server, httpServerSetting.getDefaultPort());
+        });
     }
 
     /**

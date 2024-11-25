@@ -1,71 +1,212 @@
 {
-  "defaultPort": 8080,
-  "routes": {
-    "/": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe0",
-      "code": 301
+  "servers": [
+    {
+      "defaultPort": 80,
+      "routes": {
+        "/": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe0",
+          "code": 301,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe0": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:81/cnoe0",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe1": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe2",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe2": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe3",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe3": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe4",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe4": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe5",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe5": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe6",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe6": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe7",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe7": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe8",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe8": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe9",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe9": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe10",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe10": {
+          "type": "static",
+          "responseBody": "{ \"cnoe\": \"body\" }",
+          "contentType": "application/json",
+          "code": 200
+        },
+        "/cnoe11": {
+          "type": "error",
+          "errorMessage": "bad request",
+          "code": 404
+        }
+      }
     },
-    "/cnoe0": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe1",
-      "code": 302
-    },
-    "/cnoe1": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe2",
-      "code": 302
-    },
-    "/cnoe2": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe3",
-      "code": 302
-    },
-    "/cnoe3": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe4",
-      "code": 302
-    },
-    "/cnoe4": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe5",
-      "code": 302
-    },
-    "/cnoe5": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe6",
-      "code": 302
-    },
-    "/cnoe6": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe7",
-      "code": 302
-    },
-    "/cnoe7": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe8",
-      "code": 302
-    },
-    "/cnoe8": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe9",
-      "code": 302
-    },
-    "/cnoe9": {
-      "type": "redirect",
-      "redirectUrl": "http://localhost:8080/cnoe10",
-      "code": 302
-    },
-    "/cnoe10": {
-      "type": "static",
-      "responseBody": "{ \"cnoe\": \"body\" }",
-      "contentType": "application/json",
-      "code": 200
-    },
-    "/cnoe11": {
-      "type": "error",
-      "errorMessage": "bad request",
-      "code": 404
+    {
+      "defaultPort": 81,
+      "routes": {
+        "/": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:81/cnoe0",
+          "code": 301,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe0": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe0",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe1": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe2",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe2": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe3",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe3": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe4",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe4": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe5",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe5": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe6",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe6": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe7",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe7": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe8",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe8": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe9",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe9": {
+          "type": "redirect",
+          "redirectUrl": "http://localhost:80/cnoe10",
+          "code": 302,
+          "headers": {
+            "Set-Cookie": "sessionId=abc123; Path=/; HttpOnly"
+          }
+        },
+        "/cnoe10": {
+          "type": "static",
+          "responseBody": "{ \"cnoe\": \"body\" }",
+          "contentType": "application/json",
+          "code": 200
+        },
+        "/cnoe11": {
+          "type": "error",
+          "errorMessage": "bad request",
+          "code": 404
+        }
+      }
     }
-  }
+  ]
 }
